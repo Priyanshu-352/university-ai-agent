@@ -7,7 +7,7 @@ import os
 
 load_dotenv()
 
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_qdrant import QdrantVectorStore
 
 QDRANT_URL = os.getenv('QDRANT_URL')
@@ -15,13 +15,13 @@ QDRANT_API_KEY = os.getenv('QDRANT_API_KEY')
 
 print(f"🔗 Connecting to Qdrant Cloud at: {QDRANT_URL}")
 
-embeddings = GoogleGenerativeAIEmbeddings(model="gemini-embedding-2-preview")
+embeddings =  HuggingFaceEmbeddings(model="sentence-transformers/all-MiniLM-L6-v2")
 
 try:
     # Try to access existing collection (may fail if not yet created — that's okay)
     qdrant = QdrantVectorStore.from_existing_collection(
         embedding=embeddings,
-        collection_name="my_documents",
+        collection_name="my_rag",
         url=QDRANT_URL,
         api_key=QDRANT_API_KEY,
     )

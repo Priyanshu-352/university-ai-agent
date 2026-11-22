@@ -1,9 +1,49 @@
 .env
+.env.local
+.env.*.local
+
 # Virtual environment
 venv/
+.venv/
+env/
+ENV/
+
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+parts/
+lib/
+lib64/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/secrets.toml
+
 # Qdrant local storage
 qdrant_storage/
+
 # Ingestion progress
 ingestion_progress.json
+
+# Logs
+*.log
+st_err.log
+st_out.log
